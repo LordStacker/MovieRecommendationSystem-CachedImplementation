@@ -1,11 +1,10 @@
-package dk.easv.presentation;
+package dk.easv.gui.controller;
 
-import dk.easv.entities.*;
+import dk.easv.be.*;
+import dk.easv.gui.model.AppModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.util.*;

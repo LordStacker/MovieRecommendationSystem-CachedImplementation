@@ -1,8 +1,8 @@
-package dk.easv.dataaccess;
+package dk.easv.dal;
 
-import dk.easv.entities.Movie;
-import dk.easv.entities.Rating;
-import dk.easv.entities.User;
+import dk.easv.be.Movie;
+import dk.easv.be.Rating;
+import dk.easv.be.User;
 
 import java.io.IOException;
 import java.nio.file.Files;
