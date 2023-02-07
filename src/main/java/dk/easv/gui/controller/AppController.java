@@ -1,30 +1,30 @@
 package dk.easv.gui.controller;
 
-import dk.easv.be.*;
+import dk.easv.Main;
 import dk.easv.gui.model.AppModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
-    @FXML
-    private ListView<User> lvUsers;
-    @FXML
-    private ListView<Movie> lvTopForUser;
-    @FXML
-    private ListView<Movie> lvTopAvgNotSeen;
-    @FXML
-    private ListView<UserSimilarity> lvTopSimilarUsers;
-    @FXML
-    private ListView<TopMovie> lvTopFromSimilar;
 
-
+    @FXML
+    private GridPane loginGrid;
     private AppModel model = new AppModel();
     private long timerStartMillis = 0;
     private String timerMsg = "";
+    private Stage stage;
+
 
     private void startTimer(String message){
         timerStartMillis = System.currentTimeMillis();
@@ -37,22 +37,15 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lvUsers.setItems(model.getObsUsers());
-        lvTopForUser.setItems(model.getObsTopMovieSeen());
-        lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
-        lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-        lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
-        startTimer("Load users");
-        model.loadUsers();
-        stopTimer();
-
-        lvUsers.getSelectionModel().selectedItemProperty().addListener(
-                (observableValue, oldUser, selectedUser) -> {
-                    startTimer("Loading all data for user: " + selectedUser);
-                    model.loadData(selectedUser);
-                });
     }
 
+    public void loginButton(ActionEvent actionEvent) throws IOException {
+        Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/AppTile.fxml")));
+        stage.setScene(new Scene(newScene));
+    }
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }
