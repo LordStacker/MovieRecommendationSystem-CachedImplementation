@@ -16,9 +16,10 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/App.fxml"));
         Parent root = loader.load();
         AppController controller = loader.getController();
-        controller.setStage(primaryStage);
+
         primaryStage.setTitle("Movie Recommendation System 0.01 Beta");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setOnShown((event) -> controller.setStage(primaryStage));
         primaryStage.show();
     }
 

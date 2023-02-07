@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +39,6 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void loginButton(ActionEvent actionEvent) throws IOException {
@@ -47,5 +48,8 @@ public class AppController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setMinWidth(loginGrid.getWidth());
+        stage.setMinHeight(loginGrid.getHeight()+30); // +20 because of the title bar and window border
+
     }
 }
