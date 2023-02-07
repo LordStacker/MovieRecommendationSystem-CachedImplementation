@@ -20,6 +20,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static java.awt.SystemColor.WINDOW_BORDER;
+
 public class LoginController implements Initializable {
 
     @FXML
@@ -67,7 +69,7 @@ public class LoginController implements Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setMinWidth(loginGrid.getWidth());
-        stage.setMinHeight(loginGrid.getHeight()+30); // +20 because of the title bar and window border
+        stage.setMinHeight(loginGrid.getHeight() + 30); // +30 because of the title bar and window border
 
     }
 }
