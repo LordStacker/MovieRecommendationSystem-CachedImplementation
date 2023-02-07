@@ -7,24 +7,35 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="borderPane" prefHeight="433.0" prefWidth="517.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.AppController">
+<BorderPane fx:id="borderPane" minHeight="100.0" minWidth="100.0" prefHeight="433.0" prefWidth="517.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.AppController">
    <center>
-      <Group fx:id="loginGroup" BorderPane.alignment="CENTER">
+      <Group BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="loginPane" layoutY="20.0">
+            <GridPane fx:id="loginGrid" alignment="CENTER" prefHeight="262.0" prefWidth="249.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+              </rowConstraints>
                <children>
-                  <MFXPasswordField floatMode="ABOVE" layoutX="2.0" layoutY="141.0" prefHeight="36.0" prefWidth="223.0" promptText="Password" />
-                  <MFXButton buttonType="RAISED" layoutX="1.0" layoutY="203.0" onAction="#loginButton" prefHeight="33.0" prefWidth="223.0" text="Login" />
-                  <MFXTextField alignment="BOTTOM_LEFT" floatMode="BORDER" layoutX="1.0" layoutY="85.0" prefWidth="225.0" promptText="Username" />
-                  <ImageView fitHeight="85.0" fitWidth="94.0" layoutX="70.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="103.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/7856668.png" />
                      </image>
                   </ImageView>
+                  <MFXTextField alignment="BOTTOM_LEFT" floatMode="BORDER" prefHeight="38.0" prefWidth="200.0" promptText="Username" GridPane.rowIndex="1" />
+                  <MFXPasswordField floatMode="ABOVE" prefHeight="36.0" prefWidth="200.0" promptText="Password" GridPane.rowIndex="2" />
+                  <MFXButton buttonType="RAISED" onAction="#loginButton" prefWidth="200.0" text="Login" GridPane.rowIndex="3" />
                </children>
-            </Pane>
+            </GridPane>
          </children>
       </Group>
    </center>
