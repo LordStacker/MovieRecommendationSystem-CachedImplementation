@@ -1,14 +1,9 @@
-package dk.easv.presentation;
+package dk.easv.gui.model;
 
-import dk.easv.entities.*;
-import dk.easv.logic.LogicManager;
+import dk.easv.be.*;
+import dk.easv.bll.LogicManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
 
 public class AppModel {
 

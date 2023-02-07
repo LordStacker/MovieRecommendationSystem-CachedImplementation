@@ -1,7 +1,7 @@
-package dk.easv.logic;
+package dk.easv.bll;
 
-import dk.easv.dataaccess.DataAccessManager;
-import dk.easv.entities.*;
+import dk.easv.dal.DataAccessManager;
+import dk.easv.be.*;
 import java.util.*;
 
 public class LogicManager {
