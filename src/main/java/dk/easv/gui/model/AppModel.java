@@ -5,6 +5,9 @@ import dk.easv.bll.LogicManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+
 public class AppModel {
 
     LogicManager logic = new LogicManager();
@@ -21,17 +24,26 @@ public class AppModel {
     }
 
     public void loadData(User user) {
-        obsTopMovieSeen.clear();
-        obsTopMovieSeen.addAll(logic.getTopAverageRatedMovies(user));
-
-        obsTopMovieNotSeen.clear();
-        obsTopMovieNotSeen.addAll(logic.getTopAverageRatedMoviesUserDidNotSee(user));
-
-        obsSimilarUsers.clear();
-        obsSimilarUsers.addAll(logic.getTopSimilarUsers(user));
-
-        obsTopMoviesSimilarUsers.clear();
-        obsTopMoviesSimilarUsers.addAll(logic.getTopMoviesFromSimilarPeople(user));
+        Thread t1 = new Thread(() -> {
+            obsTopMovieSeen.clear();
+            obsTopMovieSeen.addAll(logic.getTopAverageRatedMovies(user));
+        });
+        Thread t2 = new Thread(() -> {
+            obsTopMovieNotSeen.clear();
+            obsTopMovieNotSeen.addAll(logic.getTopAverageRatedMoviesUserDidNotSee(user));
+        });
+        Thread t3 = new Thread(() -> {
+            obsSimilarUsers.clear();
+            obsSimilarUsers.addAll(logic.getTopSimilarUsers(user));
+        });
+        Thread t4 = new Thread(() -> {
+            obsTopMoviesSimilarUsers.clear();
+            obsTopMoviesSimilarUsers.addAll(logic.getTopMoviesFromSimilarPeople(user));
+        });
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
     }
 
     public ObservableList<User> getObsUsers() {

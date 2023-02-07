@@ -52,7 +52,6 @@ public class DataAccessManager {
             } catch (IOException e) {
                 e.printStackTrace();
         }});
-        t.setDaemon(true);
         t.start();
     }
 
@@ -68,7 +67,6 @@ public class DataAccessManager {
             } catch (IOException e) {
                 e.printStackTrace();
         }});
-        t.setDaemon(true);
         t.start();
 
     }
@@ -95,7 +93,6 @@ public class DataAccessManager {
                 e.printStackTrace();
             }
         });
-        t.setDaemon(true);
         t.start();
     }
 
