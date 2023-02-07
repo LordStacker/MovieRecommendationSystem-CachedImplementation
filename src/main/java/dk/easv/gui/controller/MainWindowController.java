@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AppTileController implements Initializable {
+public class MainWindowController implements Initializable {
 
     @FXML
     private TableView<User> tblUsers;
