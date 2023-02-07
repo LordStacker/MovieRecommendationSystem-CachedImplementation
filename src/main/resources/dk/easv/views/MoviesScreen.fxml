@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.AppController">
+   <children>
+      <VBox layoutY="7.0" prefHeight="540.0" prefWidth="726.0" spacing="10.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="67.0" text="First" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="166.0" prefWidth="747.0">
+               <content>
+                  <HBox fx:id="tested" prefHeight="20.0" prefWidth="18.0" spacing="20.0" />
+               </content>
+            </ScrollPane>
+            <Label prefHeight="18.0" prefWidth="67.0" text="Second" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="149.0" prefWidth="706.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

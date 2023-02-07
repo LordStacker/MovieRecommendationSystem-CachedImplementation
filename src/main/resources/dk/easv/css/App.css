@@ -1,0 +1,9 @@
+* {
+    -fx-nord0: #221f1f;
+    -fx-nord1: #e50914;
+    -fx-nord2: #f5f5f1;
+    -fx-nord3: #292f33;
+}
+.test2{
+    -fx-background-color: pink;
+}

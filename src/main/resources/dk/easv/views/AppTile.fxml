@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="900.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.AppTileController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="900.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.AppTileController" stylesheets="@../css/App.css">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
     <ColumnConstraints hgrow="SOMETIMES" />
@@ -28,7 +28,7 @@
       <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TableView fx:id="tblUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+      <TableView fx:id="tblUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" styleClass="test2">
         <columns>
           <TableColumn fx:id="clmUserId" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="-1.0" text="id" />
           <TableColumn fx:id="clmUserName" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="-1.0" text="name" />

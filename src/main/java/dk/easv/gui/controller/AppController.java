@@ -4,7 +4,12 @@ import dk.easv.be.*;
 import dk.easv.gui.model.AppModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.*;
@@ -20,6 +25,10 @@ public class AppController implements Initializable {
     private ListView<UserSimilarity> lvTopSimilarUsers;
     @FXML
     private ListView<TopMovie> lvTopFromSimilar;
+
+    @FXML
+    private HBox tested;
+
 
 
     private AppModel model = new AppModel();
@@ -37,6 +46,14 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Test");
+
+        for (int i = 0; i < 300; i++) {
+            Button btn = new Button("Test");
+            tested.getChildren().add(btn);
+        }
+    }
+        /*
         lvUsers.setItems(model.getObsUsers());
         lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
@@ -53,6 +70,7 @@ public class AppController implements Initializable {
                     model.loadData(selectedUser);
                 });
     }
+         */
 
 
 }
