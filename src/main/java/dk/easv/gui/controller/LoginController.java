@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AppController implements Initializable {
+public class LoginController implements Initializable {
 
     @FXML
     private GridPane loginGrid;

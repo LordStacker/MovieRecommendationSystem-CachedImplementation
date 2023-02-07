@@ -1,13 +1,11 @@
 package dk.easv;
 
-import dk.easv.gui.controller.AppController;
+import dk.easv.gui.controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.Objects;
 
 public class Main extends Application {
 
@@ -15,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/Login.fxml"));
         Parent root = loader.load();
-        AppController controller = loader.getController();
+        LoginController controller = loader.getController();
 
         primaryStage.setTitle("Movie Recommendation System 0.01 Beta");
         primaryStage.setScene(new Scene(root));
