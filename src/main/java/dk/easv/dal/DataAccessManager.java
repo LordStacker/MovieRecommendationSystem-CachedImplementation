@@ -41,51 +41,62 @@ public class DataAccessManager {
     }
 
     private void loadAllMovies() {
-        try {
-            List<String> movieLines = Files.readAllLines(Path.of("data/movie_titles.txt"));
-            for (String movieLine : movieLines) {
-                String[] split = movieLine.split(",");
-                Movie movie = new Movie(Integer.parseInt(split[0]), split[2], Integer.parseInt(split[1]));
-                movies.put(movie.getId(), movie);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Thread t = new Thread(()->{
+            try {
+                List<String> movieLines = Files.readAllLines(Path.of("data/movie_titles.txt"));
+                for (String movieLine : movieLines) {
+                    String[] split = movieLine.split(",");
+                    Movie movie = new Movie(Integer.parseInt(split[0]), split[2], Integer.parseInt(split[1]));
+                    movies.put(movie.getId(), movie);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+        }});
+        t.setDaemon(true);
+        t.start();
     }
 
     private void loadAllUsers() {
-        try {
-            List<String> userLines = Files.readAllLines(Path.of("data/users.txt"));
-            for (String userLine : userLines) {
-                String[] split = userLine.split(",");
-                User user = new User(Integer.parseInt(split[0]), split[1]);
-                users.put(user.getId(), user);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Thread t = new Thread(() -> {
+            try {
+                List<String> userLines = Files.readAllLines(Path.of("data/users.txt"));
+                for (String userLine : userLines) {
+                    String[] split = userLine.split(",");
+                    User user = new User(Integer.parseInt(split[0]), split[1]);
+                    users.put(user.getId(), user);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+        }});
+        t.setDaemon(true);
+        t.start();
+
     }
 
     // Loads all ratings, users and movies must be loaded first
     // Users holds a list of ratings and movies holds a list of ratings
     private void loadAllRatings() {
-        loadAllMovies();
-        loadAllUsers();
-        try {
-            List<String> ratingLines = Files.readAllLines(Path.of("data/ratings.txt"));
-            for (String ratingLine : ratingLines) {
-                String[] split = ratingLine.split(",");
-                int movieId = Integer.parseInt(split[0]);
-                int userId = Integer.parseInt(split[1]);
-                int rating = Integer.parseInt(split[2]);
-                Rating ratingObj = new Rating(users.get(userId), movies.get(movieId), rating);
-                ratings.add(ratingObj);
-                users.get(userId).getRatings().add(ratingObj);
-                movies.get(movieId).getRatings().add(ratingObj);
+        Thread t = new Thread(() -> {
+            loadAllMovies();
+            loadAllUsers();
+            try {
+                List<String> ratingLines = Files.readAllLines(Path.of("data/ratings.txt"));
+                for (String ratingLine : ratingLines) {
+                    String[] split = ratingLine.split(",");
+                    int movieId = Integer.parseInt(split[0]);
+                    int userId = Integer.parseInt(split[1]);
+                    int rating = Integer.parseInt(split[2]);
+                    Rating ratingObj = new Rating(users.get(userId), movies.get(movieId), rating);
+                    ratings.add(ratingObj);
+                    users.get(userId).getRatings().add(ratingObj);
+                    movies.get(movieId).getRatings().add(ratingObj);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
+        t.setDaemon(true);
+        t.start();
     }
 
 

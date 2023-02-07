@@ -19,6 +19,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setOnShown((event) -> controller.setStage(primaryStage));
         primaryStage.show();
+        primaryStage.centerOnScreen();
     }
 
 

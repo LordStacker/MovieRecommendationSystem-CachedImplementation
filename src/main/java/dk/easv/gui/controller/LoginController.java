@@ -58,8 +58,9 @@ public class LoginController implements Initializable {
         } else {
             if(users.stream().anyMatch(user -> user.getName().equals(usernameTextField.getText()))){
                 System.out.println("Login successful");
-//                Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
-//                stage.setScene(new Scene(newScene));
+                Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
+                stage.setScene(new Scene(newScene));
+                stage.centerOnScreen();
             } else {
                 System.out.println("Login failed");
             }
