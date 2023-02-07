@@ -37,8 +37,8 @@
                         <Image url="@../icons/7856668.png" />
                      </image>
                   </ImageView>
-                  <MFXTextField alignment="BOTTOM_LEFT" floatMode="BORDER" prefWidth="280.0" promptText="Username" GridPane.rowIndex="1" />
-                  <MFXPasswordField floatMode="ABOVE" prefWidth="280.0" promptText="Password" GridPane.rowIndex="2" />
+                  <MFXTextField fx:id="usernameTextField" alignment="BOTTOM_LEFT" floatMode="BORDER" prefWidth="280.0" promptText="Username" GridPane.rowIndex="1" />
+                  <MFXPasswordField fx:id="passwordTextField" floatMode="ABOVE" prefWidth="280.0" promptText="Password" GridPane.rowIndex="2" />
                   <MFXButton buttonType="RAISED" onAction="#loginButton" prefHeight="53.0" prefWidth="280.0" text="Login" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
