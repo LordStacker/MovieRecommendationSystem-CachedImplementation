@@ -10,9 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -39,10 +36,11 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        model.loadUsers();
     }
 
     public void loginButton(ActionEvent actionEvent) throws IOException {
-        Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/AppTile.fxml")));
+        Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
         stage.setScene(new Scene(newScene));
     }
 
