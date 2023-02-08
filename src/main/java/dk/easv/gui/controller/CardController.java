@@ -1,7 +1,6 @@
 package dk.easv.gui.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import dk.easv.be.Card;
@@ -19,7 +18,7 @@ public class CardController {
         @FXML
         private Label titleMovie;
 
-        private setCards(Card cards){
+        private void setCards(Card cards){
             //Image image = new Image(HERE THE IMAGE FROM API IN THE OBJECT);
             //import image from the API
             //MovieImage.setImage(image);
