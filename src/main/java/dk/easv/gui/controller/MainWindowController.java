@@ -33,7 +33,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private MFXScrollPane mainScrollPane;
 
-    private final AppModel model = new AppModel();
+    private final AppModel model = AppModel.getInstance();
     private long timerStartMillis = 0;
     private String timerMsg = "";
 
@@ -49,7 +49,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 3; i++) {
                 HBox hBox = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
                 MFXScrollPane scrollPane = new MFXScrollPane(hBox);
                 scrollPane.setFitToHeight(true);

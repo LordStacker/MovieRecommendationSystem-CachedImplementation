@@ -19,13 +19,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Logger logger = LoggerFactory.getLogger(Main.class);
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/MainWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/Login.fxml"));
         Parent root = loader.load();
-        MainWindowController controller = loader.getController();
+        LoginController controller = loader.getController();
 
         primaryStage.setTitle("Movie Recommendation System 0.01 Beta");
         primaryStage.setScene(new Scene(root));
-//        primaryStage.setOnShown((event) -> controller.setStage(primaryStage));
+        primaryStage.setOnShown((event) -> controller.setStage(primaryStage));
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("icons/movie_projector.png"))));
         primaryStage.show();
         primaryStage.centerOnScreen();

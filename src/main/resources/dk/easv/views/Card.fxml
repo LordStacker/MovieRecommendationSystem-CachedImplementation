@@ -14,19 +14,17 @@
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="110.799951171875" minHeight="10.0" prefHeight="27.59999618530273" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="216.40000381469727" minHeight="10.0" prefHeight="216.40000381469727" vgrow="SOMETIMES" />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label fx:id="titleMovie" style="-fx-text-fill: white;" text="Title" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin></Label>
-      <MFXButton buttonType="RAISED" GridPane.rowIndex="4" />
-      <MFXButton buttonType="RAISED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <MFXButton buttonType="RAISED" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <MFXButton buttonType="RAISED" GridPane.rowIndex="2" />
+      <MFXButton buttonType="RAISED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <MFXButton buttonType="RAISED" GridPane.columnIndex="2" GridPane.rowIndex="2" />
    </children>
 </GridPane>

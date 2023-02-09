@@ -17,11 +17,19 @@ public class CardController implements Initializable {
 
 
     public void setCards(Card card) {
-        gridPane.setStyle("-fx-background-image : url(" + card.getMoviePhoto() + ");" +
-                "-fx-background-size: cover;" +
-                "-fx-background-position: center center;" +
-                "-fx-background-repeat: none;");
-        titleMovie.setText(card.getTitle());
+        if (card.getMoviePhoto() == null) {
+            gridPane.setStyle("-fx-background-color: #776142;" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center center;" +
+                    "-fx-background-repeat: none;");
+            titleMovie.setText(card.getTitle()+ " (" + card.getYear() + ")");
+        } else {
+            gridPane.setStyle("-fx-background-image : url(https://image.tmdb.org/t/p/original" + card.getMoviePhoto() + ");" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center center;" +
+                    "-fx-background-repeat: none;");
+            titleMovie.setText(card.getTitle() + " (" + card.getYear() + ")");
+        }
     }
 
     @Override
