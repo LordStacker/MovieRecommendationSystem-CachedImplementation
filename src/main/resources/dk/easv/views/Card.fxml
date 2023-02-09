@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="gridPane" prefHeight="270.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.CardController">
+<GridPane fx:id="gridPane" prefHeight="324.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.CardController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -27,4 +27,7 @@
       <MFXButton buttonType="RAISED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <MFXButton buttonType="RAISED" GridPane.columnIndex="2" GridPane.rowIndex="2" />
    </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
 </GridPane>

@@ -3,7 +3,6 @@ package dk.easv.gui.controller;
 import dk.easv.Main;
 import dk.easv.be.Card;
 import dk.easv.be.Movie;
-import dk.easv.be.TopMovie;
 import dk.easv.gui.model.AppModel;
 import dk.easv.util.MovieFetcher;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
@@ -34,7 +33,7 @@ public class HboxController implements Initializable {
     private void populateHbox(){
         try {
             ObservableList<Node> children =  mainHbox.getChildren();
-            ObservableList<TopMovie> movies = model.getObsTopMoviesSimilarUsers();
+            ObservableList<Movie> movies = model.getObsTopMovieSeen();
             System.out.println(movies);
             for (int i = 0; i < 15; i++) {
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
