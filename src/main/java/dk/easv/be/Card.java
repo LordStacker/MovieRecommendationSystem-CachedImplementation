@@ -8,6 +8,17 @@ public class Card {
 
     private String subTitleMovie;
 
+    public Card(String title, String moviePhoto, String subTitleMovie) {
+        this.title = title;
+        this.moviePhoto = moviePhoto;
+        this.subTitleMovie = subTitleMovie;
+    }
+
+    public Card(String title, String moviePhoto) {
+        this.title = title;
+        this.moviePhoto = moviePhoto;
+    }
+
 
     public String getMoviePhoto() {
         return moviePhoto;

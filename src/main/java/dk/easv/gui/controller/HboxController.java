@@ -1,6 +1,7 @@
 package dk.easv.gui.controller;
 
 import dk.easv.Main;
+import dk.easv.be.Card;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +32,12 @@ public class HboxController implements Initializable {
         try {
             ObservableList<Node> children =  mainHbox.getChildren();
             for (int i = 0; i < 24; i++) {
-                VBox vBox = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
-                children.addAll(vBox);
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
+                Parent parent= loader.load();
+
+                CardController cardController = loader.getController();
+                cardController.setCards(new Card("Testing", "https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"));
+                children.addAll(parent);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

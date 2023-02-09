@@ -1,30 +1,40 @@
 package dk.easv.gui.controller;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import dk.easv.be.Card;
 
-public class CardController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CardController implements Initializable {
         @FXML
-        private VBox Card;
+        private VBox vBox;
 
         @FXML
-        private ImageView MovieImage;
+        private ImageView movieImage;
 
-        @FXML
-        private Label subTitleMovie;
 
         @FXML
         private Label titleMovie;
 
-        private void setCards(Card card){
-            //Image image = new Image(HERE THE IMAGE FROM API IN THE OBJECT);
+
+        public void setCards(Card card){
+            Image image = new Image(card.getMoviePhoto());
+            movieImage.setPreserveRatio(true);
+            movieImage.fitWidthProperty().bind(vBox.widthProperty());
+            movieImage.fitHeightProperty().bind(vBox.heightProperty());
             //import image from the API
-            //MovieImage.setImage(image);
+            movieImage.setImage(image);
             titleMovie.setText(card.getTitle());
-            subTitleMovie.setText(card.getSubTitleMovie());
         }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
+}
 
