@@ -18,12 +18,12 @@ public class CardController {
         @FXML
         private Label titleMovie;
 
-        private void setCards(Card cards){
+        private void setCards(Card card){
             //Image image = new Image(HERE THE IMAGE FROM API IN THE OBJECT);
             //import image from the API
             //MovieImage.setImage(image);
-            titleMovie.setText(cards.getTitle());
-            subTitleMovie.setText(cards.getSubTitleMovie());
+            titleMovie.setText(card.getTitle());
+            subTitleMovie.setText(card.getSubTitleMovie());
         }
 
     }

@@ -1,71 +1,39 @@
 package dk.easv.gui.controller;
 
+import dk.easv.Main;
 import dk.easv.be.Movie;
 import dk.easv.be.TopMovie;
 import dk.easv.be.User;
 import dk.easv.be.UserSimilarity;
 import dk.easv.gui.model.AppModel;
+import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
+    public GridPane grdPane;
     @FXML
-    private TableView<User> tblUsers;
+    private VBox mainVBox;
     @FXML
-    private TableColumn<User, Integer> clmUserId;
-    @FXML
-    private TableColumn<User, String> clmUserName;
-    @FXML
-    private TableColumn<User, Double> clmUserRatings;
+    private MFXScrollPane mainScrollPane;
 
-    @FXML
-    private TableView<Movie> tblAvgTop;
-    @FXML
-    private TableColumn<Movie, String> clmTopAvgTitle;
-    @FXML
-    private TableColumn<Movie, Integer> clmTopAvgYear;
-    @FXML
-    private TableColumn<Movie, Integer> clmTopAvgRatings;
-    @FXML
-    private TableColumn<Movie, Double> clmTopAvgRating;
-
-    @FXML
-    private TableView<Movie> tblAvgTopNotSeen;
-    @FXML
-    private TableColumn<Movie, String> clmNotSeeTitle;
-    @FXML
-    private TableColumn<Movie, Integer> clmNotSeeYear;
-    @FXML
-    private TableColumn<Movie, Integer> clmNotSeeRatings;
-    @FXML
-    private TableColumn<Movie, Double> clmNotSeeAvgRating;
-
-    @FXML
-    private TableView<UserSimilarity> tblTopSimilarUsers;
-    @FXML
-    private TableColumn<UserSimilarity, Integer>clmTopSimUsersId;
-    @FXML
-    private TableColumn<UserSimilarity, String> clmTopSimUsersName;
-    @FXML
-    private TableColumn<UserSimilarity, String> clmTopSimUsersSimilarity;
-
-    @FXML
-    private TableView<TopMovie> tblTopMoviesSimilarUsers;
-    @FXML
-    private TableColumn<TopMovie, String> clmTopSimMovieTitle;
-    @FXML
-    private TableColumn<TopMovie, Integer>  clmTopSimMovieYear;
-    @FXML
-    private TableColumn<TopMovie, Double>  clmTopSimMovieAvgRating;
-
-    private AppModel model = new AppModel();
+    private final AppModel model = new AppModel();
     private long timerStartMillis = 0;
     private String timerMsg = "";
 
@@ -78,52 +46,18 @@ public class MainWindowController implements Initializable {
         System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
     }
 
-    private void initTables(){
-        clmUserId.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
-        clmUserName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        clmUserRatings.setCellValueFactory(new PropertyValueFactory<>("ratingsSize"));
-
-        clmTopAvgTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        clmTopAvgYear.setCellValueFactory(new PropertyValueFactory<>("year"));
-        clmTopAvgRating.setCellValueFactory(new PropertyValueFactory<>("averageRating"));
-        clmTopAvgRatings.setCellValueFactory(new PropertyValueFactory<>("ratingsSize"));
-
-        clmNotSeeTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        clmNotSeeYear.setCellValueFactory(new PropertyValueFactory<>("year"));
-        clmNotSeeAvgRating.setCellValueFactory(new PropertyValueFactory<>("averageRating"));
-        clmNotSeeRatings.setCellValueFactory(new PropertyValueFactory<>("ratingsSize"));
-
-        clmTopSimUsersId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        clmTopSimUsersName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        clmTopSimUsersSimilarity.setCellValueFactory(new PropertyValueFactory<>("similarityPercent"));
-
-        clmTopSimMovieTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        clmTopSimMovieYear.setCellValueFactory(new PropertyValueFactory<>("year"));
-        clmTopSimMovieAvgRating.setCellValueFactory(new PropertyValueFactory<>("averageRating"));
-
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initTables();
-        tblUsers.setItems(model.getObsUsers());
-        tblAvgTop.setItems(model.getObsTopMovieSeen());
-        tblAvgTopNotSeen.setItems(model.getObsTopMovieNotSeen());
-        tblTopSimilarUsers.setItems(model.getObsSimilarUsers());
-        tblTopMoviesSimilarUsers.setItems(model.getObsTopMoviesSimilarUsers());
-
-        startTimer("Load users");
-        model.loadUsers();
-        stopTimer();
-
-        tblUsers.getSelectionModel().selectedItemProperty().addListener(
-                (observableValue, oldUser, selectedUser) -> {
-                    startTimer("Loading all data for user: " + selectedUser);
-                    model.loadData(selectedUser);
-                    stopTimer();
-                });
+        try {
+            for (int i = 0; i < 10; i++) {
+                HBox hBox = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
+                MFXScrollPane scrollPane = new MFXScrollPane(hBox);
+                scrollPane.setFitToHeight(true);
+//                scrollPane.setPrefHeight(Region.USE_COMPUTED_SIZE*0.8);
+                mainVBox.getChildren().add(scrollPane);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-
 }
