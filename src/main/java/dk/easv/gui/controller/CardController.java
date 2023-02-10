@@ -24,7 +24,7 @@ public class CardController implements Initializable {
                     "-fx-background-repeat: none;");
             titleMovie.setText(card.getTitle()+ " (" + card.getYear() + ")");
         } else {
-            gridPane.setStyle("-fx-background-image : url(https://image.tmdb.org/t/p/original" + card.getMoviePhoto() + ");" +
+            gridPane.setStyle("-fx-background-image : url(https://image.tmdb.org/t/p/w200" + card.getMoviePhoto() + ");" +
                     "-fx-background-size: cover;" +
                     "-fx-background-position: center center;" +
                     "-fx-background-repeat: none;");
