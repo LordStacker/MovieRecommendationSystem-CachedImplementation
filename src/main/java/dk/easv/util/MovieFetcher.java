@@ -17,8 +17,9 @@ public class MovieFetcher {
     private TmdbSearch search;
     private TmdbMovies movies;
     private TmdbTV tv;
+    private static final MovieFetcher INSTANCE = new MovieFetcher();
 
-    public MovieFetcher(){
+    private MovieFetcher(){
         Properties props = new Properties();
         try(InputStream resourceStream = Main.class.getResourceAsStream(resourceName)) {
             props.load(resourceStream);
@@ -31,6 +32,9 @@ public class MovieFetcher {
         tv = api.getTvSeries();
     }
 
+    public static MovieFetcher getInstance(){
+        return INSTANCE;
+    }
     public TmdbSearch.MultiListResultsPage searchMulti(String query){
         return search.searchMulti(query, "en", 1);
     }
