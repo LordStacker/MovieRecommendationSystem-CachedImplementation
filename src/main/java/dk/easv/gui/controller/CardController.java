@@ -18,7 +18,7 @@ public class CardController implements Initializable {
 
     public void setCards(Card card) {
         if (card.getMoviePhoto() == null) {
-            gridPane.setStyle("-fx-background-color: #776142;" +
+            gridPane.setStyle("-fx-background-image : url(https://i.imgflip.com/6ahkvd.jpg);" +
                     "-fx-background-size: cover;" +
                     "-fx-background-position: center center;" +
                     "-fx-background-repeat: none;");

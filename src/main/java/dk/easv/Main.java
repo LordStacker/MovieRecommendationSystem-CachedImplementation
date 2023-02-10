@@ -29,7 +29,6 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("icons/movie_projector.png"))));
         primaryStage.show();
         primaryStage.centerOnScreen();
-        MovieFetcher movieFetcher = new MovieFetcher();
     }
 
 
