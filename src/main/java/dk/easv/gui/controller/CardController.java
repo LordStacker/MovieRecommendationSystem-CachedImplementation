@@ -10,7 +10,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CardController implements Initializable {
-    public GridPane gridPane;
+    @FXML
+    private GridPane gridPane;
+    @FXML
+    private GridPane mainGrid;
 
     @FXML
     private Label titleMovie;
@@ -34,7 +37,17 @@ public class CardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setupListeners();
+    }
 
+    private void setupListeners() {
+        mainGrid.hoverProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                mainGrid.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
+            } else {
+                mainGrid.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);");
+            }
+        });
     }
 }
 

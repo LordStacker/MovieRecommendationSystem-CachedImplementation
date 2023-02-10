@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="324.0" prefWidth="220.0" stylesheets="@../css/CardStyle.css" vgap="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.CardController">
+<GridPane fx:id="mainGrid" prefHeight="324.0" prefWidth="220.0" styleClass="background" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.CardController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -20,9 +20,9 @@
       <RowConstraints maxHeight="45.0" minHeight="30.0" prefHeight="45.0" />
    </rowConstraints>
    <children>
-      <Label fx:id="titleMovie" style="-fx-text-fill: Black;" text="Title" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Label fx:id="titleMovie" text="Title" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets />
+            <Insets left="15.0" />
          </GridPane.margin>
          <font>
             <Font size="18.0" />
@@ -40,6 +40,6 @@
       </GridPane>
    </children>
    <padding>
-      <Insets bottom="10.0" />
+      <Insets bottom="5.0" />
    </padding>
 </GridPane>
