@@ -22,13 +22,13 @@ MFXTextField, MFXPasswordField {
     -fx-background-radius: 5 5 0 0;
     -fx-border-color: -dark-accent;
     -fx-border-width: 1;
-    -fx-border-radius: 5;
+    -fx-border-radius: 5 5 0 0;
     -fx-font-size: 1.2em;
     -fx-font-family: -roboto;
 }
 
 MFXButton {
-    -fx-background-color: -dark-shades;
+    -fx-background-color: -dark-accent;
     -fx-text-fill: -light-shades;
     -fx-font-size: 1.2em;
     -fx-border-radius: 15;
@@ -37,3 +37,15 @@ MFXButton {
 GridPane {
     -fx-background-color: -light-shades;
 }
+
+.background {
+    -fx-background-color: -dark-shades;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.2, 2, 3);
+}
+
+.buttonLog{
+    -fx-background-radius: 50px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.2, 2, 3);
+}
+

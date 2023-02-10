@@ -20,8 +20,6 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static java.awt.SystemColor.WINDOW_BORDER;
-
 public class LoginController implements Initializable {
 
     @FXML
@@ -30,7 +28,7 @@ public class LoginController implements Initializable {
     private MFXPasswordField passwordTextField;
     @FXML
     private GridPane loginGrid;
-    private AppModel model = new AppModel();
+    private AppModel model = AppModel.getInstance();
     private long timerStartMillis = 0;
     private String timerMsg = "";
     private Stage stage;
@@ -56,14 +54,17 @@ public class LoginController implements Initializable {
         if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
             System.out.println("Please fill in all fields");
         } else {
-            if(users.stream().anyMatch(user -> user.getName().equals(usernameTextField.getText()))){
-                System.out.println("Login successful");
-                Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
-                stage.setScene(new Scene(newScene));
-                stage.centerOnScreen();
-            } else {
-                System.out.println("Login failed");
+            for (User user: users) {
+                if(user.getName().equals(usernameTextField.getText())){
+                    System.out.println("Login successful");
+                    model.loadData(user);
+                    Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
+                    stage.setScene(new Scene(newScene));
+                    stage.centerOnScreen();
+                    return;
+                }
             }
+            System.out.println("Login failed");
         }
     }
 
@@ -71,6 +72,5 @@ public class LoginController implements Initializable {
         this.stage = stage;
         stage.setMinWidth(loginGrid.getWidth());
         stage.setMinHeight(loginGrid.getHeight() + 30); // +30 because of the title bar and window border
-
     }
 }

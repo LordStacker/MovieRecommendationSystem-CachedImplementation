@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane prefHeight="394.0" prefWidth="454.0" stylesheets="@../css/LoginStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.LoginController">
+<GridPane prefHeight="394.0" prefWidth="454.0" stylesheets="@../css/LoginStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.LoginController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -16,7 +17,7 @@
    <children>
       <Group GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
          <children>
-            <GridPane fx:id="loginGrid" alignment="CENTER" prefHeight="304.0" prefWidth="342.0">
+            <GridPane fx:id="loginGrid" alignment="CENTER" prefHeight="304.0" prefWidth="342.0" styleClass="background">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -32,12 +33,35 @@
                         <Image url="@../icons/user.png" />
                      </image>
                   </ImageView>
-                  <MFXTextField fx:id="usernameTextField" alignment="BOTTOM_LEFT" animated="false" floatMode="ABOVE" prefHeight="39.0" prefWidth="280.0" promptText="Username" GridPane.rowIndex="1" />
-                  <MFXPasswordField fx:id="passwordTextField" animated="false" floatMode="ABOVE" prefWidth="280.0" promptText="Password" GridPane.rowIndex="2" />
-                  <MFXButton defaultButton="true" onAction="#loginButton" prefHeight="43.0" prefWidth="135.0" rippleAnimateBackground="false" text="Login" GridPane.rowIndex="3">
+                  <HBox GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../icons/userLog.png" />
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <MFXTextField fx:id="usernameTextField" alignment="BOTTOM_LEFT" animated="false" floatMode="ABOVE" prefHeight="39.0" prefWidth="280.0" promptText="Username" text="Anneke Preusig" GridPane.rowIndex="1"/>
+                     </children>
+                  </HBox>
+                  <HBox GridPane.rowIndex="2">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../icons/lockIconLog.png" />
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                         </ImageView>
+                        <MFXPasswordField fx:id="passwordTextField" animated="false" floatMode="ABOVE" prefWidth="280.0" promptText="Password" text="f" GridPane.rowIndex="2"/>
+                     </children>
+                  </HBox>
+                  <MFXButton defaultButton="true" onAction="#loginButton" prefHeight="43.0" prefWidth="135.0" rippleAnimateBackground="false" styleClass="buttonLog" text="Login" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
-                     </font></MFXButton>
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" />
+                     </GridPane.margin></MFXButton>
                </children>
             </GridPane>
          </children>
