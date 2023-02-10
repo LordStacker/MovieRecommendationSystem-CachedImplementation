@@ -48,7 +48,6 @@ public class MainWindowController implements Initializable {
 
                 HBox hBox = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
                 MFXScrollPane scrollPane = new MFXScrollPane(hBox);
-                scrollPane.setStyle("-fx-background-color: transparent;");
                 scrollPane.setFitToHeight(true);
 
                 mainVBox.getChildren().add(scrollPane);
