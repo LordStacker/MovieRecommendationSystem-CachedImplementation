@@ -24,9 +24,21 @@ import java.util.ResourceBundle;
 
 public class HboxController implements Initializable {
     private static final AppModel model = AppModel.getInstance();
-    private final MovieFetcher movieFetcher = new MovieFetcher();
+    private final MovieFetcher movieFetcher = MovieFetcher.getInstance();
     @FXML
     private HBox mainHbox;
+
+    private long timerStartMillis = 0;
+    private String timerMsg = "";
+
+    private void startTimer(String message){
+        timerStartMillis = System.currentTimeMillis();
+        timerMsg = message;
+    }
+
+    private void stopTimer(){
+        System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,6 +51,7 @@ public class HboxController implements Initializable {
             ObservableList<TopMovie> movies = model.getObsTopMoviesSimilarUsers();
 //            System.out.println(movies);
             for (int i = 0; i < 15; i++) {
+                startTimer("Loading card " + i);
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
                 Parent parent = loader.load();
 
@@ -62,6 +75,7 @@ public class HboxController implements Initializable {
                 }
 
                 cardController.setCards(new Card(movies.get(i).getTitle(), imageURL, movies.get(i).getYear()));
+                stopTimer();
                 children.addAll(parent);
             }
         } catch (IOException e) {
