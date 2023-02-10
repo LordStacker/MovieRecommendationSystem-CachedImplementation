@@ -9,41 +9,34 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 public class AppModel {
-
+    private static final AppModel INSTANCE = new AppModel();
     LogicManager logic = new LogicManager();
     // Models of the data in the view
-    private final ObservableList<User>  obsUsers = FXCollections.observableArrayList();
-    private final ObservableList<Movie> obsTopMovieSeen = FXCollections.observableArrayList();
-    private final ObservableList<Movie> obsTopMovieNotSeen = FXCollections.observableArrayList();
-    private final ObservableList<UserSimilarity>  obsSimilarUsers = FXCollections.observableArrayList();
-    private final ObservableList<TopMovie> obsTopMoviesSimilarUsers = FXCollections.observableArrayList();
+    private static final ObservableList<User>  obsUsers = FXCollections.observableArrayList();
+    private static final ObservableList<Movie> obsTopMovieSeen = FXCollections.observableArrayList();
+    private static final ObservableList<Movie> obsTopMovieNotSeen = FXCollections.observableArrayList();
+    private static final ObservableList<UserSimilarity>  obsSimilarUsers = FXCollections.observableArrayList();
+    private static final ObservableList<TopMovie> obsTopMoviesSimilarUsers = FXCollections.observableArrayList();
 
+    private AppModel() {
+    }
+    public static AppModel getInstance() {
+        return INSTANCE;
+    }
     public void loadUsers(){
         obsUsers.clear();
         obsUsers.addAll(logic.getAllUsers());
     }
 
     public void loadData(User user) {
-        Thread t1 = new Thread(() -> {
             obsTopMovieSeen.clear();
             obsTopMovieSeen.addAll(logic.getTopAverageRatedMovies(user));
-        });
-        Thread t2 = new Thread(() -> {
             obsTopMovieNotSeen.clear();
             obsTopMovieNotSeen.addAll(logic.getTopAverageRatedMoviesUserDidNotSee(user));
-        });
-        Thread t3 = new Thread(() -> {
             obsSimilarUsers.clear();
             obsSimilarUsers.addAll(logic.getTopSimilarUsers(user));
-        });
-        Thread t4 = new Thread(() -> {
             obsTopMoviesSimilarUsers.clear();
             obsTopMoviesSimilarUsers.addAll(logic.getTopMoviesFromSimilarPeople(user));
-        });
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
     }
 
     public ObservableList<User> getObsUsers() {

@@ -1,30 +1,40 @@
 package dk.easv.gui.controller;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+
 import dk.easv.be.Card;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
-public class CardController {
-        @FXML
-        private VBox Card;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-        @FXML
-        private ImageView MovieImage;
+public class CardController implements Initializable {
+    public GridPane gridPane;
 
-        @FXML
-        private Label subTitleMovie;
+    @FXML
+    private Label titleMovie;
 
-        @FXML
-        private Label titleMovie;
 
-        private void setCards(Card cards){
-            //Image image = new Image(HERE THE IMAGE FROM API IN THE OBJECT);
-            //import image from the API
-            //MovieImage.setImage(image);
-            titleMovie.setText(cards.getTitle());
-            subTitleMovie.setText(cards.getSubTitleMovie());
+    public void setCards(Card card) {
+        if (card.getMoviePhoto() == null) {
+            gridPane.setStyle("-fx-background-image : url(https://i.imgflip.com/6ahkvd.jpg);" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center center;" +
+                    "-fx-background-repeat: none;");
+            titleMovie.setText(card.getTitle()+ " (" + card.getYear() + ")");
+        } else {
+            gridPane.setStyle("-fx-background-image : url(https://image.tmdb.org/t/p/original" + card.getMoviePhoto() + ");" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center center;" +
+                    "-fx-background-repeat: none;");
+            titleMovie.setText(card.getTitle() + " (" + card.getYear() + ")");
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
+}
 
