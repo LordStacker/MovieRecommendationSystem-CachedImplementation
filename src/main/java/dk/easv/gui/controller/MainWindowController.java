@@ -44,6 +44,10 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initMovies();
+    }
+
+    private void initMovies(){
         // Storing map of string and list of movies
         LinkedHashMap<String, ObservableList<Movie>> map = new LinkedHashMap<>();
         // Convert list of TopMovie into list of Movie
