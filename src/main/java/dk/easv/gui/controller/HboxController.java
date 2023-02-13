@@ -2,7 +2,7 @@ package dk.easv.gui.controller;
 
 import dk.easv.Main;
 import dk.easv.be.Card;
-import dk.easv.be.TopMovie;
+import dk.easv.be.Movie;
 import dk.easv.gui.model.AppModel;
 import dk.easv.util.MovieFetcher;
 import info.movito.themoviedbapi.TmdbSearch;
@@ -23,10 +23,11 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HboxController implements Initializable {
-    private static final AppModel model = AppModel.getInstance();
     private final MovieFetcher movieFetcher = MovieFetcher.getInstance();
+    private ObservableList<Movie> movies = null;
     @FXML
     private HBox mainHbox;
+
 
     private long timerStartMillis = 0;
     private String timerMsg = "";
@@ -42,14 +43,12 @@ public class HboxController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        populateHbox();
+
     }
 
     private void populateHbox(){
         try {
             ObservableList<Node> children =  mainHbox.getChildren();
-            ObservableList<TopMovie> movies = model.getObsTopMoviesSimilarUsers();
-//            System.out.println(movies);
             for (int i = 0; i < 15; i++) {
                 startTimer("Loading card " + i);
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
@@ -82,5 +81,10 @@ public class HboxController implements Initializable {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void setMovieList(ObservableList<Movie> movieList) {
+        this.movies = movieList;
+        populateHbox();
     }
 }

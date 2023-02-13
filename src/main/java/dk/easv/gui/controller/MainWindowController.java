@@ -1,8 +1,10 @@
 package dk.easv.gui.controller;
 
 import dk.easv.Main;
+import dk.easv.be.Movie;
 import dk.easv.gui.model.AppModel;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,8 +15,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class MainWindowController implements Initializable {
 
@@ -39,14 +43,19 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LinkedHashMap<String, ObservableList<Movie>> map = new LinkedHashMap<>();
+        map.put("Top movies you have seen", model.getObsTopMovieSeen());
+        map.put("Top movies you have not seen", model.getObsTopMovieNotSeen());
+        Set<String> keys = map.keySet();
         try {
-            for (int i = 0; i < 3; i++) {
-
-                Label label = new Label("Label " + i);
+            for (String key : keys){
+                Label label = new Label(key);
                 mainVBox.getChildren().add(label);
 
-
-                HBox hBox = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
+                HBox hBox = loader.load();
+                HboxController hboxController = loader.getController();
+                hboxController.setMovieList(map.get(key));
                 MFXScrollPane scrollPane = new MFXScrollPane(hBox);
                 scrollPane.setFitToHeight(true);
                 scrollPane.getStyleClass().add("sideScroll");
