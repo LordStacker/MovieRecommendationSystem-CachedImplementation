@@ -22,16 +22,19 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setOnShown((event) -> controller.setStage(primaryStage));
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("icons/movie_projector.png"))));
-        root.getStylesheets().add(Main.class.getResource("/dk/easv/css/LoginStyle.css").toExternalForm());
+        root.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/dk/easv/css/LoginStyle.css")).toExternalForm());
         primaryStage.show();
         primaryStage.centerOnScreen();
     }
 
     public static void manageDisplayMode(){
         if (!LoginController.checkIfDarkMode()){
-            root.getStylesheets().add(Main.class.getResource("/dk/easv/css/LoginStyle.css").toExternalForm());
-        }else
-            root.getStylesheets().add(Main.class.getResource("/dk/easv/css/LoginStyleDarkMode.css").toExternalForm());
+            root.getStylesheets().clear();
+            root.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/dk/easv/css/LoginStyle.css")).toExternalForm());
+        } else {
+            root.getStylesheets().clear();
+            root.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/dk/easv/css/LoginStyleDarkMode.css")).toExternalForm());
+        }
     }
 
 
