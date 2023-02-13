@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="394.0" prefWidth="454.0" stylesheets="@../css/LoginStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.LoginController">
+<GridPane prefHeight="394.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.LoginController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -28,31 +35,32 @@
                   <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="83.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="switchDisplayModeButtonFx" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#switchDisplayMode" prefHeight="26.0" prefWidth="26.0" styleClass="switchDisplayModeButton" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+                  <ImageView fx:id="userIcon" fitHeight="83.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" styleClass="userIcon">
                      <image>
                         <Image url="@../icons/user.png" />
                      </image>
                   </ImageView>
                   <HBox GridPane.rowIndex="1">
                      <children>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="usernameIcon" fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="usernameIcon">
                             <Image url="@../icons/userLog.png" />
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
                         </ImageView>
-                        <MFXTextField fx:id="usernameTextField" alignment="BOTTOM_LEFT" animated="false" floatMode="ABOVE" prefHeight="39.0" prefWidth="280.0" promptText="Username" text="Anneke Preusig" GridPane.rowIndex="1"/>
+                        <MFXTextField fx:id="usernameTextField" alignment="BOTTOM_LEFT" animated="false" floatMode="ABOVE" prefHeight="39.0" prefWidth="280.0" promptText="Username" text="Anneke Preusig" GridPane.rowIndex="1" />
                      </children>
                   </HBox>
                   <HBox GridPane.rowIndex="2">
                      <children>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="passwordIcon" fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@../icons/lockIconLog.png" />
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
                          </ImageView>
-                        <MFXPasswordField fx:id="passwordTextField" animated="false" floatMode="ABOVE" prefWidth="280.0" promptText="Password" text="f" GridPane.rowIndex="2"/>
+                        <MFXPasswordField fx:id="passwordTextField" animated="false" floatMode="ABOVE" prefWidth="280.0" promptText="Password" text="f" GridPane.rowIndex="2" />
                      </children>
                   </HBox>
                   <MFXButton defaultButton="true" onAction="#loginButton" prefHeight="43.0" prefWidth="135.0" rippleAnimateBackground="false" styleClass="buttonLog" text="Login" GridPane.rowIndex="3">

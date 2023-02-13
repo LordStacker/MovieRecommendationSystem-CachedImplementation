@@ -18,9 +18,9 @@
 MFXTextField, MFXPasswordField {
     -fx-text-fill: -dark-shades;
     -fx-prompt-text-fill: -light-accent;
-    -fx-background-color: -light-shades;
+    -fx-background-color: -bs-secondary;
     -fx-background-radius: 5 5 0 0;
-    -fx-border-color: -dark-accent;
+    -fx-border-color: -dark-shades;
     -fx-border-width: 1;
     -fx-border-radius: 5 5 0 0;
     -fx-font-size: 1.2em;
@@ -35,12 +35,12 @@ MFXButton {
 }
 
 GridPane {
-    -fx-background-color: -light-shades;
+    -fx-background-color: -bs-secondary;
 }
 
 .switchDisplayModeButton{
     -fx-background-color: -dark-shades;
-    -fx-background-image: url('../icons/dark_mode.png');
+    -fx-background-image: url('../icons/light_mode.png');
     -fx-background-size: 26px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 90%;
