@@ -54,7 +54,6 @@ public class HboxController implements Initializable {
                 Parent parent = loader.load();
                 CardController cardController = loader.getController();
 
-
                 cardController.setCards(new Card(movies.get(i).getTitle(), getMovieImage(movies.get(i)), movies.get(i).getYear()));
                 stopTimer();
                 children.addAll(parent);
@@ -70,25 +69,31 @@ public class HboxController implements Initializable {
         populateHbox();
     }
 
-    private String getMovieImage(Movie movie){
-        TmdbSearch.MultiListResultsPage multiListResultsPage = movieFetcher.searchMulti(movie.getTitle());
-        Multi.MediaType type;
-        if (!multiListResultsPage.getResults().isEmpty()) {
-            type = multiListResultsPage.getResults().get(0).getMediaType();
-        } else {
-            type = null;
-        }
 
-
+    private String getMovieImage(Movie movie) {
         String imageURL = null;
-        if (type == Multi.MediaType.MOVIE) {
-            MovieDb movieDb = (MovieDb) multiListResultsPage.getResults().get(0);
-            imageURL = movieDb.getPosterPath();
-        } else if (type == Multi.MediaType.TV_SERIES) {
-            TvSeries tvSeries = (TvSeries) multiListResultsPage.getResults().get(0);
-            imageURL = tvSeries.getPosterPath();
-        }
+        TmdbSearch.MultiListResultsPage multis = movieFetcher.searchMulti(movie.getTitle());
 
+        if (!multis.getResults().isEmpty()){
+            imageURL = getMovieImageMoreAccurate(movie, multis);
+        } else if (movie.getTitle().contains(":") || movie.getTitle().contains("(")) {
+            imageURL = getMovieImage(new Movie(movie.getId(), movie.getTitle().split("[:(]", 2)[0], movie.getYear()));
+        }
+        return imageURL;
+    }
+
+    private String getMovieImageMoreAccurate(Movie movie, TmdbSearch.MultiListResultsPage rs) {
+        String imageURL = null;
+        if (rs.getResults().get(0).getMediaType() == Multi.MediaType.MOVIE) {
+            try {
+                imageURL = movieFetcher.searchMovie(movie.getTitle(), movie.getYear()).getResults().get(0).getPosterPath();
+            } catch (Exception e){
+                imageURL = ((MovieDb) rs.getResults().get(0)).getPosterPath();
+            }
+        } else if (rs.getResults().get(0).getMediaType() == Multi.MediaType.TV_SERIES) {
+            TvSeries tv = (TvSeries) rs.getResults().get(0);
+            imageURL = tv.getPosterPath();
+        }
         return imageURL;
     }
 }
