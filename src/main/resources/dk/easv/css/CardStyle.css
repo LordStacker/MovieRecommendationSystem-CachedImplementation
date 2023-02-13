@@ -21,6 +21,13 @@ Label {
     -fx-font-family: -roboto;
 }
 
+.heading1 {
+    -fx-text-fill: -light-shades;
+    -fx-font-size: 3em;
+    -fx-font-family: -roboto;
+    -fx-label-padding: 20 0 0 20;
+}
+
 .background {
     -fx-background-color: -dark-accent;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.2, 2, 3);

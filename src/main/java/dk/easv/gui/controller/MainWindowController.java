@@ -65,6 +65,7 @@ public class MainWindowController implements Initializable {
         try {
             for (String key : keys){
                 Label label = new Label(key);
+                label.getStyleClass().add("heading1");
                 mainVBox.getChildren().add(label);
 
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
