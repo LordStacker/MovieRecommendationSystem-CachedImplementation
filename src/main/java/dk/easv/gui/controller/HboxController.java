@@ -52,27 +52,10 @@ public class HboxController implements Initializable {
                 startTimer("Loading card " + i);
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
                 Parent parent = loader.load();
-
                 CardController cardController = loader.getController();
-                TmdbSearch.MultiListResultsPage multiListResultsPage = movieFetcher.searchMulti(movies.get(i).getTitle());
-                Multi.MediaType type;
-                if (!multiListResultsPage.getResults().isEmpty()) {
-                    type = multiListResultsPage.getResults().get(0).getMediaType();
-                } else {
-                    type = null;
-                }
 
 
-                String imageURL = null;
-                if (type == Multi.MediaType.MOVIE) {
-                    MovieDb movieDb = (MovieDb) multiListResultsPage.getResults().get(0);
-                    imageURL = movieDb.getPosterPath();
-                } else if (type == Multi.MediaType.TV_SERIES) {
-                    TvSeries tvSeries = (TvSeries) multiListResultsPage.getResults().get(0);
-                    imageURL = tvSeries.getPosterPath();
-                }
-
-                cardController.setCards(new Card(movies.get(i).getTitle(), imageURL, movies.get(i).getYear()));
+                cardController.setCards(new Card(movies.get(i).getTitle(), getMovieImage(movies.get(i)), movies.get(i).getYear()));
                 stopTimer();
                 children.addAll(parent);
             }
@@ -85,5 +68,27 @@ public class HboxController implements Initializable {
     public void setMovieList(ObservableList<Movie> movieList) {
         this.movies = movieList;
         populateHbox();
+    }
+
+    private String getMovieImage(Movie movie){
+        TmdbSearch.MultiListResultsPage multiListResultsPage = movieFetcher.searchMulti(movie.getTitle());
+        Multi.MediaType type;
+        if (!multiListResultsPage.getResults().isEmpty()) {
+            type = multiListResultsPage.getResults().get(0).getMediaType();
+        } else {
+            type = null;
+        }
+
+
+        String imageURL = null;
+        if (type == Multi.MediaType.MOVIE) {
+            MovieDb movieDb = (MovieDb) multiListResultsPage.getResults().get(0);
+            imageURL = movieDb.getPosterPath();
+        } else if (type == Multi.MediaType.TV_SERIES) {
+            TvSeries tvSeries = (TvSeries) multiListResultsPage.getResults().get(0);
+            imageURL = tvSeries.getPosterPath();
+        }
+
+        return imageURL;
     }
 }
