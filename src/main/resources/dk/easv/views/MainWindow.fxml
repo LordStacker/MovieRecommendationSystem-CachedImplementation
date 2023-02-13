@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import javafx.scene.layout.VBox?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.layout.*?>
 
-<MFXScrollPane stylesheets="@../css/CardStyle.css" fx:id="mainScrollPane" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="562.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.MainWindowController">
+<MFXScrollPane fx:id="mainScrollPane" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="562.0" minWidth="1005.0" prefHeight="562.0" prefWidth="1005.0" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.MainWindowController">
    <content>
       <VBox fx:id="mainVBox" spacing="30.0" />
    </content>

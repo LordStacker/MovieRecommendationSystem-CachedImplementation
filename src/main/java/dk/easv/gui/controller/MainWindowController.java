@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +33,7 @@ public class MainWindowController implements Initializable {
     private final AppModel model = AppModel.getInstance();
     private long timerStartMillis = 0;
     private String timerMsg = "";
+    private Stage stage;
 
     private void startTimer(String message){
         timerStartMillis = System.currentTimeMillis();
@@ -77,5 +79,13 @@ public class MainWindowController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setStage(Stage oldStage){
+        this.stage = oldStage;
+        stage.setMinHeight(mainScrollPane.getPrefHeight());
+        stage.setMinWidth(mainScrollPane.getMinWidth());
+        stage.setHeight(oldStage.getHeight());
+        stage.setWidth(oldStage.getWidth());
     }
 }
