@@ -3,7 +3,6 @@ package dk.easv.gui.controller;
 import dk.easv.Main;
 import dk.easv.be.Card;
 import dk.easv.be.Movie;
-import dk.easv.gui.model.AppModel;
 import dk.easv.util.MovieFetcher;
 import info.movito.themoviedbapi.TmdbSearch;
 import info.movito.themoviedbapi.model.MovieDb;

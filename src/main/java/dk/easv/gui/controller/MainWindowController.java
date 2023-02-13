@@ -4,6 +4,7 @@ import dk.easv.Main;
 import dk.easv.be.Movie;
 import dk.easv.gui.model.AppModel;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,9 +44,17 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Storing map of string and list of movies
         LinkedHashMap<String, ObservableList<Movie>> map = new LinkedHashMap<>();
+        // Convert list of TopMovie into list of Movie
+        ObservableList<Movie> topMovies = FXCollections.observableArrayList();
+        model.getObsTopMoviesSimilarUsers().forEach(topMovie -> topMovies.add(topMovie.getMovie()));
+        // put the list into map
+        map.put("Top movies you might like", topMovies);
         map.put("Top movies you have seen", model.getObsTopMovieSeen());
         map.put("Top movies you have not seen", model.getObsTopMovieNotSeen());
+
+        // for each key in the map initialize new hbox and set the movies
         Set<String> keys = map.keySet();
         try {
             for (String key : keys){
