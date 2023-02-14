@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
-    -light-shades: #FCFAFB;
-    -light-accent: #D98F85;
-    -main-color: #76ABD4;
-    -dark-accent: #74B2BB;
-    -dark-shades: #1F5D78;
+    -light-shades: #F6F6F5;
+    -light-accent: #A8A4A8;
+    -main-color: #EC9D18;
+    -dark-accent: #CA4537;
+    -dark-shades: #1F2C2D;
     -bs-primary: #0d6efd;
     -bs-secondary: #6c757d;
     -bs-success: #198754;
@@ -16,13 +16,13 @@
 }
 
 Label {
-    -fx-text-fill: -light-shades;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 1.2em;
     -fx-font-family: -roboto;
 }
 
 .heading1 {
-    -fx-text-fill: -light-shades;
+    -fx-text-fill: -main-color;
     -fx-font-size: 3em;
     -fx-font-family: -roboto;
     -fx-label-padding: 20 0 0 20;
@@ -30,11 +30,25 @@ Label {
 
 .background {
     -fx-background-color: -dark-accent;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.2, 2, 3);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
 }
 
 .scroll-pane{
     -fx-background-color: -dark-shades;
-    -track-color: -dark-accent;
-    -thumb-color: -light-accent;
+    -track-color: -light-accent;
+    -thumb-color: -dark-accent;
+}
+
+.outline-button {
+    -fx-background-color: transparent;
+    -fx-border-color: -light-shades;
+    -fx-border-radius: 3;
+
+    -fx-text-fill: -light-shades;
+}
+
+.outline-button:hover {
+    -fx-background-color: -dark-shades;
+    -fx-text-fill: white;
 }

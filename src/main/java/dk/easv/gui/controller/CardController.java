@@ -21,13 +21,13 @@ public class CardController implements Initializable {
 
     public void setCards(Card card) {
         if (card.getMoviePhoto() == null) {
-            gridPane.setStyle("-fx-background-image : url(https://i.imgflip.com/6ahkvd.jpg);" +
+            mainGrid.setStyle(mainGrid.getStyle() + "-fx-background-image : url(https://i.imgflip.com/6ahkvd.jpg);" +
                     "-fx-background-size: cover;" +
                     "-fx-background-position: center center;" +
                     "-fx-background-repeat: none;");
             titleMovie.setText(card.getTitle()+ " (" + card.getYear() + ")");
         } else {
-            gridPane.setStyle("-fx-background-image : url(https://image.tmdb.org/t/p/w200" + card.getMoviePhoto() + ");" +
+            mainGrid.setStyle(mainGrid.getStyle() + "-fx-background-image : url(https://image.tmdb.org/t/p/w200" + card.getMoviePhoto() + ");" +
                     "-fx-background-size: cover;" +
                     "-fx-background-position: center center;" +
                     "-fx-background-repeat: none;");
@@ -43,9 +43,9 @@ public class CardController implements Initializable {
     private void setupListeners() {
         mainGrid.hoverProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                mainGrid.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
+                mainGrid.setStyle(mainGrid.getStyle() + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
             } else {
-                mainGrid.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);");
+                mainGrid.setStyle(mainGrid.getStyle() + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);");
             }
         });
     }
