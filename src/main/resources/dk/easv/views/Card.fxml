@@ -8,38 +8,36 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="mainGrid" prefHeight="350.0" prefWidth="220.0" styleClass="background" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.CardController">
+<GridPane fx:id="mainGrid" prefHeight="395.0" prefWidth="220.0" styleClass="background" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.CardController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="161.6000732421875" minWidth="10.0" prefWidth="104.8" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="76.79990234375" minWidth="10.0" prefWidth="48.000000000000014" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="67.9999755859375" minWidth="10.0" prefWidth="67.9999755859375" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="110.799951171875" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="342.2" minHeight="10.0" prefHeight="303.6000122070312" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="54.39999999999998" minHeight="30.0" prefHeight="51.19998779296873" />
    </rowConstraints>
    <children>
-      <Label fx:id="titleMovie" text="Title" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets left="15.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <GridPane fx:id="gridPane" hgap="10.0" prefHeight="80.0" prefWidth="222.0" style="-fx-background-color: rgba(0,0,0,0.33);" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+      <GridPane hgap="10.0" prefHeight="62.0" prefWidth="222.0" vgap="10.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="109.79990234375" minWidth="10.0" prefWidth="79.5999267578125" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="73.4" minWidth="10.0" prefWidth="41.200073242187486" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="86.199951171875" minWidth="10.0" prefWidth="61.200048828125006" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <MFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="84.0" styleClass="outline-button" text="Play movie" />
-            <MFXButton buttonType="RAISED" minWidth="48.0" styleClass="outline-button" text="More..." GridPane.columnIndex="2" />
-            <MFXButton buttonType="RAISED" minWidth="6.0" prefHeight="27.0" prefWidth="52.0" styleClass="outline-button" text="Info" GridPane.columnIndex="1" />
+            <MFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="84.0" styleClass="outline-button" text="Play movie" GridPane.rowIndex="1" />
+            <MFXButton buttonType="RAISED" minWidth="48.0" styleClass="outline-button" text="More..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <MFXButton buttonType="RAISED" minWidth="6.0" prefHeight="27.0" prefWidth="52.0" styleClass="outline-button" text="Info" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="titleMovie" text="Title" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
          <GridPane.margin>
             <Insets />
@@ -47,6 +45,17 @@
          <padding>
             <Insets left="5.0" right="5.0" />
          </padding>
+      </GridPane>
+      <GridPane fx:id="gridPane" GridPane.columnSpan="2147483647">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
       </GridPane>
    </children>
 </GridPane>

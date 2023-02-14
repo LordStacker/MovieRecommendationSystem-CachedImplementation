@@ -29,9 +29,7 @@ Label {
 }
 
 .background {
-    -fx-background-color: -dark-accent;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20;
+    -fx-background-color: transparent;
 }
 
 .scroll-pane{
