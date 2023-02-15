@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 * {
     -light-shades: #F6F6F5;
     -light-accent: #A8A4A8;
     -main-color: #EC9D18;
     -dark-accent: #CA4537;
-    -dark-shades: #1F2C2D;
+    -dark-shades: #232323;
     -bs-primary: #0d6efd;
     -bs-secondary: #6c757d;
     -bs-success: #198754;
@@ -13,18 +15,19 @@
     -bs-warning: #ffc107;
     -bs-danger: #dc3545;
     -roboto: 'Roboto', sans-serif;
+    -robotomono: 'Roboto Mono', monospace;
 }
 
 Label {
     -fx-text-fill: #ffffff;
-    -fx-font-size: 1.2em;
-    -fx-font-family: -roboto;
+    -fx-font-size: 1.4em;
+    -fx-font-family: 'Roboto', sans-serif;
 }
 
 .heading1 {
     -fx-text-fill: -main-color;
     -fx-font-size: 3em;
-    -fx-font-family: -roboto;
+    -fx-font-family: 'Bebas Neue', cursive;
     -fx-label-padding: 20 0 0 20;
 }
 

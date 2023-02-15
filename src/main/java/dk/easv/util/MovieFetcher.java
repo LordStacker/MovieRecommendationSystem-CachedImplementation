@@ -53,6 +53,10 @@ public class MovieFetcher {
         return tv.getSeries(id, "en");
     }
 
+    public MovieResultsPage getPopularMovies(){
+        return movies.getPopularMovies("en", 0);
+    }
+
 
 
 }

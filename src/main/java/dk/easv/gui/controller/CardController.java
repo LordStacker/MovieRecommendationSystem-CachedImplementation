@@ -30,7 +30,9 @@ public class CardController implements Initializable {
             gridPane.setStyle(gridPane.getStyle() + "-fx-background-image : url(https://image.tmdb.org/t/p/w200" + card.getMoviePhoto() + ");" +
                     "-fx-background-size: cover;" +
                     "-fx-background-position: center center;" +
-                    "-fx-background-repeat: none;");
+                    "-fx-background-repeat: none;" +
+                    "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);" +
+                    "-fx-background-radius: 10 0 0 10;");
             titleMovie.setText(card.getTitle() + " (" + card.getYear() + ")");
         }
     }
