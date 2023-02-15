@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="mainHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.HboxController">
+<HBox fx:id="mainHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0" styleClass="background" stylesheets="@../css/Background.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.HboxController">
    <children>
    </children>
    <padding>
