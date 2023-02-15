@@ -4,6 +4,7 @@ import dk.easv.Main;
 import dk.easv.be.Movie;
 import dk.easv.gui.model.AppModel;
 import dk.easv.util.MovieFetcher;
+import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.collections.FXCollections;
@@ -60,10 +61,16 @@ public class MainWindowController implements Initializable {
         ObservableList<Movie> topMovies = FXCollections.observableArrayList();
         model.getObsTopMoviesSimilarUsers().forEach(topMovie -> topMovies.add(topMovie.getMovie()));
         // put the list into map
+        map.put("Upcoming movies", getUpcomingMovies());
         map.put("Top movies you might like", topMovies);
         map.put("Top movies you have seen", model.getObsTopMovieSeen());
         map.put("Top movies you have not seen", model.getObsTopMovieNotSeen());
+
+
+
+
         MovieResultsPage movieResultsPage = movieFetcher.getPopularMovies();
+
 
         stackPane.setStyle("-fx-background-image: url(https://www.themoviedb.org/t/p/original/" + movieResultsPage.getResults().get(0).getBackdropPath() + ");" +
                 "-fx-background-size: cover;" +
@@ -72,7 +79,6 @@ public class MainWindowController implements Initializable {
         // for each key in the map initialize new hbox and set the movies
         Set<String> keys = map.keySet();
         try {
-            for (int i = 0; i < 3; i++) {
                 for (String key : keys){
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
                     HBox hBox = loader.load();
@@ -88,13 +94,10 @@ public class MainWindowController implements Initializable {
                     scrollPane.getStyleClass().add("sideScroll");
                     mainVBox.getChildren().add(scrollPane);
                 }
-            }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     public void setStage(Stage oldStage){
@@ -103,5 +106,15 @@ public class MainWindowController implements Initializable {
         stage.setMinWidth(mainScrollPane.getMinWidth());
         stage.setHeight(oldStage.getHeight());
         stage.setWidth(oldStage.getWidth());
+    }
+
+    private ObservableList<Movie> getUpcomingMovies(){
+        ObservableList<Movie> upcomingMovies = FXCollections.observableArrayList();
+        MovieResultsPage movieResultsPage = movieFetcher.getUpcomingMovies();
+        for (int i = 0; i < 20; i++) {
+            MovieDb movieDb = movieResultsPage.getResults().get(i);
+            upcomingMovies.add(new Movie(0, movieDb.getTitle(), Integer.parseInt(movieDb.getReleaseDate().split("-")[0])));
+        }
+        return upcomingMovies;
     }
 }
