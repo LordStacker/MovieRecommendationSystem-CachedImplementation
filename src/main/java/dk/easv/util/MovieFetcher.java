@@ -30,6 +30,7 @@ public class MovieFetcher {
         search = api.getSearch();
         movies = api.getMovies();
         tv = api.getTvSeries();
+
     }
 
     public static MovieFetcher getInstance(){
@@ -55,6 +56,10 @@ public class MovieFetcher {
 
     public MovieResultsPage getPopularMovies(){
         return movies.getPopularMovies("en", 0);
+    }
+
+    public MovieResultsPage getUpcomingMovies(){
+        return movies.getUpcoming("en", 1, "US");
     }
 
 

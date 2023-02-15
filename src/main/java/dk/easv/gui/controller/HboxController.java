@@ -48,7 +48,7 @@ public class HboxController implements Initializable {
     private void populateHbox(){
         try {
             ObservableList<Node> children =  mainHbox.getChildren();
-            for (int i = 0; i < 25; i++) {
+            for (int i = 0; i < 20; i++) {
                 startTimer("Loading card " + i);
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Card.fxml")));
                 Parent parent = loader.load();
