@@ -28,7 +28,7 @@ public class LoginController implements Initializable {
     private MFXPasswordField passwordTextField;
     @FXML
     private GridPane loginGrid;
-    private AppModel model = AppModel.getInstance();
+    private final AppModel model = AppModel.getInstance();
     private long timerStartMillis = 0;
     private String timerMsg = "";
     private Stage stage;
@@ -58,9 +58,13 @@ public class LoginController implements Initializable {
                 if(user.getName().equals(usernameTextField.getText())){
                     System.out.println("Login successful");
                     model.loadData(user);
-                    Parent newScene = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
+                    FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
+                    Parent newScene = loader.load();
+                    MainWindowController controller = loader.getController();
+                    controller.setStage(stage);
                     stage.setScene(new Scene(newScene));
                     stage.centerOnScreen();
+
                     return;
                 }
             }

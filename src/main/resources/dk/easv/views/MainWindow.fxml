@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<MFXScrollPane fx:id="mainScrollPane" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="562.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.MainWindowController">
+<MFXScrollPane fx:id="mainScrollPane" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="562.0" minWidth="1005.0" prefHeight="562.0" prefWidth="1005.0" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.MainWindowController">
    <content>
-      <VBox fx:id="mainVBox" spacing="30.0" />
+      <StackPane>
+         <children>
+            <VBox fx:id="mainVBox" spacing="5.0">
+               <children>
+                  <StackPane fx:id="stackPane" prefHeight="490.0" prefWidth="1005.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="1005.0">
+                           <children>
+                              <MFXButton layoutX="85.0" layoutY="232.0" styleClass="outline-button" AnchorPane.bottomAnchor="48.799999999999976" AnchorPane.leftAnchor="85.0" />
+                              <Label layoutX="61.0" layoutY="58.0" styleClass="heading1" text="Popular movie today" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="58.0">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </content>
 </MFXScrollPane>
