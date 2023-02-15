@@ -14,11 +14,6 @@ public class Card {
         this.year = year;
     }
 
-    public Card(String title, String moviePhoto) {
-        this.title = title;
-        this.moviePhoto = moviePhoto;
-    }
-
 
     public String getMoviePhoto() {
         return moviePhoto;
