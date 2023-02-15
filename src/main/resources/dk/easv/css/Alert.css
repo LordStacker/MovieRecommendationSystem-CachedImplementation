@@ -1,0 +1,65 @@
+* {
+    -light-shades: #FCFAFB;
+    -light-accent: #D98F85;
+    -main-color: #76ABD4;
+    -dark-accent: #74B2BB;
+    -dark-shades: #1F5D78;
+    -bs-primary: #0d6efd;
+    -bs-secondary: #6c757d;
+    -bs-success: #198754;
+    -bs-info: #0dcaf0;
+    -bs-warning: #ffc107;
+    -bs-danger: #dc3545;
+    -roboto: 'Roboto', sans-serif;
+}
+
+
+
+.dialog-alert-style .label {
+    -fx-text-fill: -light-shades;
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+
+.dialog-alert-style .header-panel {
+    -fx-background-color: -dark-shades;
+    -fx-text-fill: -light-shades;
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.dialog-alert-style .button .CANCEL {
+    -fx-background-color: warning;
+}
+
+.dialog-alert-style .button .OK {
+    -fx-background-color: warning;
+}
+
+.dialog-alert-style .ok-button {
+    -fx-background-color: -bs-success;
+    -fx-text-fill: -light-shades;
+}
+
+.dialog-alert-style {
+    -fx-background-color: -dark-shades;
+}
+
+.ok-button {
+    -fx-background-color: -light-accent;
+}
+
+.custom-button {
+    -fx-background-color: -dark-accent;
+    -fx-text-fill: -light-shades;
+    -fx-font-size: 1.2em;
+    -fx-border-radius: 15;
+}
+
+.custom-button:hover {
+    -fx-background-color: -dark-accent;
+    -fx-border-color: transparent;
+}

@@ -1,6 +1,7 @@
 package dk.easv.gui.controller;
 
 import dk.easv.Main;
+import dk.easv.util.AlertHelper;
 import dk.easv.be.User;
 import dk.easv.gui.model.AppModel;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -52,7 +54,7 @@ public class LoginController implements Initializable {
         ObservableList<User> users = model.getObsUsers();
 
         if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
-            System.out.println("Please fill in all fields");
+            AlertHelper.showDefaultAlert("Please fill in all fields", Alert.AlertType.WARNING);
         } else {
             for (User user: users) {
                 if(user.getName().equals(usernameTextField.getText())){
@@ -64,7 +66,7 @@ public class LoginController implements Initializable {
                     return;
                 }
             }
-            System.out.println("Login failed");
+            AlertHelper.showDefaultAlert("Login failed", Alert.AlertType.WARNING);
         }
     }
 
