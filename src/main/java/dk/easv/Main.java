@@ -18,7 +18,7 @@ public class Main extends Application {
         Parent root = loader.load();
         LoginController controller = loader.getController();
 
-        primaryStage.setTitle("Movie Recommendation System 0.01 Beta");
+        primaryStage.setTitle("Movie Recommendation System by The Mexicans");
         primaryStage.setScene(new Scene(root));
         primaryStage.setOnShown((event) -> controller.setStage(primaryStage));
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("icons/movie_projector.png"))));
