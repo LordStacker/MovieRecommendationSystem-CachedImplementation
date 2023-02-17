@@ -13,7 +13,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,9 +29,11 @@ import java.util.Set;
 public class MainWindowController implements Initializable {
 
     @FXML
-    private GridPane grdPane;
+    private Label movieName;
     @FXML
-    private StackPane stackPane;
+    private AnchorPane anchorPane;
+    @FXML
+    private GridPane grdPane;
     @FXML
     private VBox mainVBox;
     @FXML
@@ -61,7 +66,8 @@ public class MainWindowController implements Initializable {
         ObservableList<Movie> topMovies = FXCollections.observableArrayList();
         model.getObsTopMoviesSimilarUsers().forEach(topMovie -> topMovies.add(topMovie.getMovie()));
         // put the list into map
-        map.put("Upcoming movies", getUpcomingMovies());
+        map.put("Popular movies", convertMovieDbToMovie(movieFetcher.getPopularMovies()));
+        map.put("Upcoming movies", convertMovieDbToMovie(movieFetcher.getUpcomingMovies()));
         map.put("Top movies you might like", topMovies);
         map.put("Top movies you have seen", model.getObsTopMovieSeen());
         map.put("Top movies you have not seen", model.getObsTopMovieNotSeen());
@@ -69,13 +75,17 @@ public class MainWindowController implements Initializable {
 
 
 
-        MovieResultsPage movieResultsPage = movieFetcher.getPopularMovies();
+        MovieDb movieDb = movieFetcher.getPopularMovies().getResults().get((int) (Math.random() * 19)); //
 
 
-        stackPane.setStyle("-fx-background-image: url(https://www.themoviedb.org/t/p/original/" + movieResultsPage.getResults().get(0).getBackdropPath() + ");" +
+        anchorPane.setStyle("-fx-background-image: url(https://www.themoviedb.org/t/p/original/" + movieDb.getBackdropPath() + ");" +
                 "-fx-background-size: cover;" +
                 "-fx-background-position: center center;" +
                 "-fx-background-repeat: none;");
+        movieName.setText(movieDb.getTitle());
+        mainScrollPane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            anchorPane.setMinHeight(newValue.doubleValue()-100); // magic number probably should be done with a binding or something
+        });
         // for each key in the map initialize new hbox and set the movies
         Set<String> keys = map.keySet();
         try {
@@ -108,13 +118,12 @@ public class MainWindowController implements Initializable {
         stage.setWidth(oldStage.getWidth());
     }
 
-    private ObservableList<Movie> getUpcomingMovies(){
-        ObservableList<Movie> upcomingMovies = FXCollections.observableArrayList();
-        MovieResultsPage movieResultsPage = movieFetcher.getUpcomingMovies();
-        for (int i = 0; i < 20; i++) {
-            MovieDb movieDb = movieResultsPage.getResults().get(i);
-            upcomingMovies.add(new Movie(0, movieDb.getTitle(), Integer.parseInt(movieDb.getReleaseDate().split("-")[0])));
+
+    private ObservableList<Movie> convertMovieDbToMovie(MovieResultsPage movieResultsPage){
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
+        for (MovieDb movieDb : movieResultsPage.getResults()) {
+            movies.add(new Movie(0, movieDb.getTitle(), Integer.parseInt(movieDb.getReleaseDate().split("-")[0])));
         }
-        return upcomingMovies;
+        return movies;
     }
 }
