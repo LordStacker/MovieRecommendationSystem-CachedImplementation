@@ -9,9 +9,12 @@ import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -131,5 +134,18 @@ public class MainWindowController implements Initializable {
             movies.add(new Movie(0, movieDb.getTitle(), Integer.parseInt(movieDb.getReleaseDate().split("-")[0])));
         }
         return movies;
+    }
+
+    @FXML
+    private void logOutAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Login.fxml")));
+            Parent parent = fxmlLoader.load();
+            LoginController loginController = fxmlLoader.getController();
+            loginController.setStage(stage);
+            stage.setScene(new Scene(parent));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

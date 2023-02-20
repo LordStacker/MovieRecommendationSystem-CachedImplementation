@@ -4,34 +4,30 @@
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <MFXScrollPane fx:id="mainScrollPane" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="562.0" minWidth="1005.0" prefHeight="562.0" prefWidth="1005.0" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.MainWindowController">
    <content>
-      <StackPane>
+      <VBox fx:id="mainVBox" spacing="5.0">
          <children>
-            <VBox fx:id="mainVBox" spacing="5.0">
+            <AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="465.0" prefWidth="1005.0" VBox.vgrow="ALWAYS">
                <children>
-                  <AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="465.0" prefWidth="1005.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <MFXButton layoutX="85.0" layoutY="232.0" styleClass="outline-button" AnchorPane.bottomAnchor="48.799999999999976" AnchorPane.leftAnchor="85.0" />
-                        <Label layoutX="61.0" layoutY="58.0" styleClass="heading1" text="Popular movie today" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="58.0">
-                           <font>
-                              <Font size="26.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="movieName" layoutX="61.0" layoutY="132.0" style="-fx-text-fill: #EEEEEE;" styleClass="heading1" text="Popular movie today" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="132.0">
-                           <font>
-                              <Font size="26.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
+                  <MFXButton layoutX="85.0" layoutY="232.0" styleClass="outline-button" AnchorPane.bottomAnchor="48.799999999999976" AnchorPane.leftAnchor="85.0" />
+                  <Label layoutX="61.0" layoutY="58.0" styleClass="heading1" text="Popular movie today" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="58.0">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="movieName" layoutX="61.0" layoutY="132.0" style="-fx-text-fill: #EEEEEE;" styleClass="heading1" text="Popular movie today" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="132.0">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <MFXButton layoutX="911.0" layoutY="33.0" onAction="#logOutAction" styleClass="outline-button" text="Log out" AnchorPane.rightAnchor="39.399999999999956" AnchorPane.topAnchor="33.0" />
                </children>
-            </VBox>
+            </AnchorPane>
          </children>
-      </StackPane>
+      </VBox>
    </content>
 </MFXScrollPane>
