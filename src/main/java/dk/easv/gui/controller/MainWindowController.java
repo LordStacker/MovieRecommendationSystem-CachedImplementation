@@ -28,6 +28,8 @@ import java.util.Set;
 
 public class MainWindowController implements Initializable {
 
+    private final AppModel model = AppModel.getInstance();
+    private final MovieFetcher movieFetcher = MovieFetcher.getInstance();
     @FXML
     private Label movieName;
     @FXML
@@ -38,19 +40,16 @@ public class MainWindowController implements Initializable {
     private VBox mainVBox;
     @FXML
     private MFXScrollPane mainScrollPane;
-
-    private final AppModel model = AppModel.getInstance();
     private long timerStartMillis = 0;
     private String timerMsg = "";
     private Stage stage;
-    private final MovieFetcher movieFetcher = MovieFetcher.getInstance();
 
-    private void startTimer(String message){
+    private void startTimer(String message) {
         timerStartMillis = System.currentTimeMillis();
         timerMsg = message;
     }
 
-    private void stopTimer(){
+    private void stopTimer() {
         System.out.println(timerMsg + " took : " + (System.currentTimeMillis() - timerStartMillis) + "ms");
     }
 
@@ -59,7 +58,48 @@ public class MainWindowController implements Initializable {
         initMovies();
     }
 
-    private void initMovies(){
+    public void setStage(Stage oldStage) {
+        this.stage = oldStage;
+        stage.setMinHeight(mainScrollPane.getPrefHeight());
+        stage.setMinWidth(mainScrollPane.getMinWidth());
+        stage.setHeight(oldStage.getHeight());
+        stage.setWidth(oldStage.getWidth());
+    }
+
+    private void initMovies() {
+        LinkedHashMap<String, ObservableList<Movie>> map = getNameMovieMap();
+
+        // Get random movie from popular movies and set it as background
+        MovieDb movieDb = movieFetcher.getPopularMovies().getResults().get((int) (Math.random() * 19)); //
+
+        anchorPane.setStyle("-fx-background-image: url(https://www.themoviedb.org/t/p/original/" + movieDb.getBackdropPath() + ");" +
+                "-fx-background-size: cover;" +
+                "-fx-background-position: center center;" +
+                "-fx-background-repeat: none;");
+        movieName.setText(movieDb.getTitle());
+
+        mainScrollPane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            anchorPane.setMinHeight(newValue.doubleValue() - 100); // magic number probably should be done with a binding or something
+        });
+
+        // for each key in the map initialize new hbox and set the movies
+        Set<String> keys = map.keySet();
+        try {
+            for (String key : keys) {
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
+                HBox hBox = loader.load();
+                HboxController hboxController = loader.getController();
+
+                hboxController.setMovieList(map.get(key));
+                addLabelAndScrollPane(key, hBox);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private LinkedHashMap<String, ObservableList<Movie>> getNameMovieMap() {
         // Storing map of string and list of movies
         LinkedHashMap<String, ObservableList<Movie>> map = new LinkedHashMap<>();
         // Convert list of TopMovie into list of Movie
@@ -71,55 +111,21 @@ public class MainWindowController implements Initializable {
         map.put("Top movies you might like", topMovies);
         map.put("Top movies you have seen", model.getObsTopMovieSeen());
         map.put("Top movies you have not seen", model.getObsTopMovieNotSeen());
-
-
-
-
-        MovieDb movieDb = movieFetcher.getPopularMovies().getResults().get((int) (Math.random() * 19)); //
-
-
-        anchorPane.setStyle("-fx-background-image: url(https://www.themoviedb.org/t/p/original/" + movieDb.getBackdropPath() + ");" +
-                "-fx-background-size: cover;" +
-                "-fx-background-position: center center;" +
-                "-fx-background-repeat: none;");
-        movieName.setText(movieDb.getTitle());
-        mainScrollPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            anchorPane.setMinHeight(newValue.doubleValue()-100); // magic number probably should be done with a binding or something
-        });
-        // for each key in the map initialize new hbox and set the movies
-        Set<String> keys = map.keySet();
-        try {
-                for (String key : keys){
-                    FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/Hbox.fxml")));
-                    HBox hBox = loader.load();
-                    HboxController hboxController = loader.getController();
-
-                    Label label = new Label(key);
-                    label.getStyleClass().add("heading1");
-                    mainVBox.getChildren().add(label);
-
-                    hboxController.setMovieList(map.get(key));
-                    MFXScrollPane scrollPane = new MFXScrollPane(hBox);
-                    scrollPane.setFitToHeight(true);
-                    scrollPane.getStyleClass().add("sideScroll");
-                    mainVBox.getChildren().add(scrollPane);
-                }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return map;
     }
 
-    public void setStage(Stage oldStage){
-        this.stage = oldStage;
-        stage.setMinHeight(mainScrollPane.getPrefHeight());
-        stage.setMinWidth(mainScrollPane.getMinWidth());
-        stage.setHeight(oldStage.getHeight());
-        stage.setWidth(oldStage.getWidth());
+    private void addLabelAndScrollPane(String key, HBox hBox) {
+        Label label = new Label(key);
+        label.getStyleClass().add("heading1");
+        mainVBox.getChildren().add(label);
+        MFXScrollPane scrollPane = new MFXScrollPane(hBox);
+        scrollPane.setFitToHeight(true);
+        scrollPane.getStyleClass().add("sideScroll");
+        mainVBox.getChildren().add(scrollPane);
     }
 
 
-    private ObservableList<Movie> convertMovieDbToMovie(MovieResultsPage movieResultsPage){
+    private ObservableList<Movie> convertMovieDbToMovie(MovieResultsPage movieResultsPage) {
         ObservableList<Movie> movies = FXCollections.observableArrayList();
         for (MovieDb movieDb : movieResultsPage.getResults()) {
             movies.add(new Movie(0, movieDb.getTitle(), Integer.parseInt(movieDb.getReleaseDate().split("-")[0])));

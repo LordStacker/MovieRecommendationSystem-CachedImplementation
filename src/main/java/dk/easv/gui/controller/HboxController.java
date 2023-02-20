@@ -61,7 +61,6 @@ public class HboxController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void setMovieList(ObservableList<Movie> movieList) {
@@ -73,7 +72,6 @@ public class HboxController implements Initializable {
     private String getMovieImage(Movie movie) {
         String imageURL = null;
         TmdbSearch.MultiListResultsPage multis = movieFetcher.searchMulti(movie.getTitle());
-
         if (!multis.getResults().isEmpty()){
             imageURL = getMovieImageMoreAccurate(movie, multis);
         } else if (movie.getTitle().contains(":") || movie.getTitle().contains("(")) {
