@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<MFXScrollPane fx:id="mainScrollPane" fitToWidth="true" prefHeight="435.0" prefWidth="715.0" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.InfoScreenController">
+<MFXScrollPane fx:id="mainScrollPane" fitToWidth="true" prefHeight="435.0" prefWidth="715.0" stylesheets="@../css/CardStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.gui.controller.InfoScreenController">
    <content>
       <VBox prefHeight="408.0" prefWidth="714.0">
          <children>
-            <AnchorPane fx:id="imagePane" />
+            <AnchorPane fx:id="imagePane">
+               <children>
+                  <MFXButton layoutX="911.0" layoutY="33.0" onAction="#goBackAction" styleClass="outline-button" text=" Go Back" AnchorPane.leftAnchor="39.399999999999956" AnchorPane.topAnchor="33.0" />
+               </children></AnchorPane>
             <Label fx:id="movieName" styleClass="heading1" text="Label" />
-            <Label fx:id="movieDescription" minHeight="-Infinity" minWidth="-Infinity" text="Label" wrapText="true" />
+            <Label fx:id="movieDescription" minHeight="-Infinity" minWidth="-Infinity" text="Label" wrapText="true">
+               <VBox.margin>
+                  <Insets left="20.0" right="40.0" />
+               </VBox.margin></Label>
          </children>
       </VBox>
    </content>
