@@ -12,6 +12,7 @@
     -bs-info: #0dcaf0;
     -bs-warning: #ffc107;
     -bs-danger: #dc3545;
+    -main-color: #EC9D18;
     -roboto: 'Roboto', sans-serif;
 }
 
@@ -39,13 +40,14 @@ GridPane {
 }
 
 .background {
-    -fx-background-color: -dark-shades;
+    -fx-background-color: #59585b;
     -fx-background-radius: 20;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.2, 2, 3);
 }
 
 .buttonLog{
     -fx-background-radius: 50px;
+    -fx-background-color: -main-color;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0.2, 2, 3);
 }
 

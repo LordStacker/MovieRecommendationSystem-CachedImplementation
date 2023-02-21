@@ -9,13 +9,20 @@ import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class InfoScreenController implements Initializable {
@@ -40,6 +47,19 @@ public class InfoScreenController implements Initializable {
         getMovie(new Movie(0, card.getTitle(), card.getYear()));
         stage.setHeight(stage.getHeight()-1);
         stage.setWidth(stage.getWidth()-1);
+    }
+
+    @FXML
+    private void goBackAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(Main.class.getResource("views/MainWindow.fxml")));
+            Parent parent = fxmlLoader.load();
+            MainWindowController mainController = fxmlLoader.getController();
+            mainController.setStage(stage);
+            stage.setScene(new Scene(parent));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void getMovie(Movie movie) {
