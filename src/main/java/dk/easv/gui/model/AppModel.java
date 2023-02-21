@@ -2,6 +2,7 @@ package dk.easv.gui.model;
 
 import dk.easv.be.*;
 import dk.easv.bll.LogicManager;
+import info.movito.themoviedbapi.model.MovieDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,6 +18,7 @@ public class AppModel {
     private static final ObservableList<Movie> obsTopMovieNotSeen = FXCollections.observableArrayList();
     private static final ObservableList<UserSimilarity>  obsSimilarUsers = FXCollections.observableArrayList();
     private static final ObservableList<TopMovie> obsTopMoviesSimilarUsers = FXCollections.observableArrayList();
+    private static final ObservableList<MovieDb> obsMovieDb = FXCollections.observableArrayList();
 
     private AppModel() {
     }

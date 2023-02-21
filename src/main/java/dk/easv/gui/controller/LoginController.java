@@ -76,7 +76,9 @@ public class LoginController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-        stage.setMinWidth(loginGrid.getWidth());
-        stage.setMinHeight(loginGrid.getHeight() + 30); // +30 because of the title bar and window border
+        stage.setHeight(loginGrid.getPrefHeight()+30); // +30 because of the title bar and window border
+        stage.setWidth(loginGrid.getPrefWidth()+1);
+        stage.setMinWidth(loginGrid.getPrefWidth());
+        stage.setMinHeight(loginGrid.getPrefHeight() + 30); // +30 because of the title bar and window border
     }
 }
