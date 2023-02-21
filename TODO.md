@@ -1,3 +1,9 @@
+- change login screen to match the new color scheme
+- add go back button from info screen
+- populate info screen with movie info
+
+---
+BS for later
 - store all the information for a movie in a single api fetch
 - try threading and faster loading
 - anything you want to do
