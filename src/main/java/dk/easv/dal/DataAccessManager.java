@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 public class DataAccessManager {
-    private HashMap<Integer, User> users = new HashMap<>();
-    private HashMap<Integer, Movie> movies = new HashMap<>();
-    private List<Rating> ratings = new ArrayList<>();
+    private final HashMap<Integer, User> users = new HashMap<>();
+    private final HashMap<Integer, Movie> movies = new HashMap<>();
+    private final List<Rating> ratings = new ArrayList<>();
 
     // Loads all data from disk and stores in memory
     // For performance, data is only updated if updateCacheFromDisk() is called

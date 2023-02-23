@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    -light-shades: #F6F6F5;
+    -light-accent: #A8A4A8;
+    -main-color: #EC9D18;
+    -dark-accent: #CA4537;
+    -dark-shades: #232323;
+    -bs-primary: #0d6efd;
+    -bs-secondary: #6c757d;
+    -bs-success: #198754;
+    -bs-info: #0dcaf0;
+    -bs-warning: #ffc107;
+    -bs-danger: #dc3545;
+    -roboto: 'Roboto', sans-serif;
+    -robotomono: 'Roboto Mono', monospace;
+}
+
+Label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 1.4em;
+    -fx-font-family: 'Roboto', sans-serif;
+}
+
+.heading1 {
+    -fx-text-fill: -main-color;
+    -fx-font-size: 3em;
+    -fx-font-family: 'Bebas Neue', cursive;
+    -fx-label-padding: 20 0 0 20;
+}
+
+.background {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane{
+    -fx-background-color: -dark-shades;
+    -track-color: -light-accent;
+    -thumb-color: -dark-accent;
+}
+
+.outline-button {
+    -fx-background-color: transparent;
+    -fx-border-color: -light-shades;
+    -fx-border-radius: 3;
+
+    -fx-text-fill: -light-shades;
+}
+
+.outline-button:hover {
+    -fx-background-color: -dark-shades;
+    -fx-text-fill: white;
+}

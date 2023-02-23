@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private int id;
+    private final int id;
     private String name;
-    private List<Rating> ratings;
+    private final List<Rating> ratings;
 
     public User(int id, String name) {
         this.id = id;

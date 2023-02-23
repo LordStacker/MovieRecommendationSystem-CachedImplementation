@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
-    private int id;
+    private final int id;
     private String title;
     private int year;
-    private List<Rating> ratings;
+    private final List<Rating> ratings;
 
     public Movie(int id, String title, int year) {
         this.id = id;

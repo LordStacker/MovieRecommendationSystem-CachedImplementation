@@ -13,10 +13,9 @@ import java.util.Properties;
 public class MovieFetcher {
 
     private final String resourceName = "/config.cfg";
-    private TmdbApi api;
-    private TmdbSearch search;
-    private TmdbMovies movies;
-    private TmdbTV tv;
+    private final TmdbSearch search;
+    private final TmdbMovies movies;
+    private final TmdbTV tv;
     private static final MovieFetcher INSTANCE = new MovieFetcher();
 
     private MovieFetcher(){
@@ -26,10 +25,11 @@ public class MovieFetcher {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        api = new TmdbApi(props.getProperty("API_KEY"));
+        TmdbApi api = new TmdbApi(props.getProperty("API_KEY"));
         search = api.getSearch();
         movies = api.getMovies();
         tv = api.getTvSeries();
+
     }
 
     public static MovieFetcher getInstance(){
@@ -51,6 +51,14 @@ public class MovieFetcher {
     }
     public TvSeries getTv(int id){
         return tv.getSeries(id, "en");
+    }
+
+    public MovieResultsPage getPopularMovies(){
+        return movies.getPopularMovies("en", 0);
+    }
+
+    public MovieResultsPage getUpcomingMovies(){
+        return movies.getUpcoming("en", 0, "US");
     }
 
 
