@@ -92,7 +92,7 @@ public class InfoScreenController implements Initializable {
                     "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 2, 3);");
         }
         stage.widthProperty().addListener((observable, oldValue, newValue) -> {
-            newValue = newValue.doubleValue() - 20;
+            newValue = newValue.doubleValue() - 40;
             imagePane.setPrefWidth(newValue.doubleValue());
             mainScrollPane.setPrefWidth(newValue.doubleValue());
             movieDescription.setPrefWidth(newValue.doubleValue());
